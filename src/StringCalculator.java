@@ -1,11 +1,16 @@
+import java.nio.file.DirectoryStream;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 public class StringCalculator {
 
     private final String delimiters=",|\n";
 
-    public int add(String input){
+    public int add(String input) throws Exception {
         if(isEmpty(input))
             return 0;
         else if(length(input)==1)
@@ -23,7 +28,7 @@ public class StringCalculator {
         return input.split(delimiters);
     }
 
-    private String[] splitOnCustomDelimiters(String input){
+    private String[] splitOnCustomDelimiters(String input) throws PatternSyntaxException {
         String regex = "//(.)\n(.*)";
         Matcher matcher = Pattern.compile(regex).matcher(input);
         matcher.matches();
@@ -33,7 +38,21 @@ public class StringCalculator {
     }
 
     //get sum of two numbers
-    private int getSum(String[] strings){
+    private int getSum(String[] strings) throws Exception {
+
+        ArrayList<Integer> negatives = new ArrayList<>();
+        for(String n:strings){
+            if(string2Int(n)<0)
+                negatives.add(string2Int(n));
+        }
+        if(negatives.size()>0){
+            String neg="";
+            for(int n:negatives){
+                neg+=n+", ";
+            }
+            throw new Exception("negatives not allowed : "+neg);
+        }
+
         int sum=0;
         for(String n:strings){
             sum += string2Int(n);
