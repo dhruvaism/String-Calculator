@@ -1,3 +1,6 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringCalculator {
 
     private final String delimiters=",|\n";
@@ -8,9 +11,21 @@ public class StringCalculator {
         else if(length(input)==1)
             return string2Int(input);
 
-        String[] strings = input.split(delimiters);
+        String[] strings = split(input);
 
         return getSum(strings);
+    }
+
+    public String[] split(String input){
+        if(input.startsWith("//")){
+            Pattern pattern = Pattern.compile("//(.)\n(.*)");
+            Matcher matcher = pattern.matcher(input);
+            matcher.matches();
+            String customDelimiters = matcher.group(1);
+            String numbers = matcher.group(2);
+            return numbers.split(customDelimiters);
+        }
+        return input.split(delimiters);
     }
 
     //get sum of two numbers
