@@ -5,7 +5,8 @@ public class StringCalculator {
             return 0;
         else if(length(input)==1)
             return string2Int(input);
-        return -1;
+        String[] strings = input.split(",");
+        return string2Int(strings[0])+string2Int(strings[1]);
     }
 
     //find the length of string
