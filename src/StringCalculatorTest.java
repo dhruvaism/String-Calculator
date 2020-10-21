@@ -35,6 +35,11 @@ public class StringCalculatorTest {
         assertEquals(10,calculator.add("1\n2,3,4"));
     }
 
+    @Test
+    public void shouldSupportDifferentDelimiters(){
+        assertEquals(3,calculator.add("//;\n1;2"));
+    }
+
     @AfterEach
     public  void destroy(){
        calculator = null;
