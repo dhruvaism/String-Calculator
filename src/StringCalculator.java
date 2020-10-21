@@ -6,7 +6,7 @@ public class StringCalculator {
         else if(length(input)==1)
             return string2Int(input);
 
-        String[] strings = input.split(",");
+        String[] strings = input.split(",|\n");
 
         return getSum(strings);
     }
