@@ -1,3 +1,5 @@
+import org.junit.platform.commons.util.StringUtils;
+
 import java.nio.file.DirectoryStream;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -40,6 +42,16 @@ public class StringCalculator {
     //get sum of two numbers
     private int getSum(String[] strings) throws Exception {
 
+        checkForNegativeNumbers(strings);
+
+        int sum=0;
+        for(String n:strings){
+            sum += string2Int(n);
+        }
+        return sum;
+    }
+
+    private void checkForNegativeNumbers(String[] strings) throws Exception{
         ArrayList<Integer> negatives = new ArrayList<>();
         for(String n:strings){
             if(string2Int(n)<0)
@@ -47,17 +59,11 @@ public class StringCalculator {
         }
         if(negatives.size()>0){
             String neg="";
-            for(int n:negatives){
-                neg+=n+", ";
+            for(int n:negatives) {
+                neg += n + ", ";
             }
             throw new Exception("negatives not allowed : "+neg);
         }
-
-        int sum=0;
-        for(String n:strings){
-            sum += string2Int(n);
-        }
-        return sum;
     }
 
     //find the length of string
