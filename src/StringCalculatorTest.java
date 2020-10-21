@@ -25,6 +25,11 @@ public class StringCalculatorTest {
        assertEquals(3,calculator.add("1,2"));
     }
 
+    @Test
+    public void moreThanTwoCharsCommaDelimitedStringReturnsSum(){
+        assertEquals(10,calculator.add("1,2,3,4"));
+    }
+
     @AfterEach
     public  void destroy(){
        calculator = null;
