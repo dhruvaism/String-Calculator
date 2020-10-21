@@ -46,6 +46,8 @@ public class StringCalculator {
 
         int sum=0;
         for(String n:strings){
+            if(string2Int(n)>1000)
+                continue;
             sum += string2Int(n);
         }
         return sum;
