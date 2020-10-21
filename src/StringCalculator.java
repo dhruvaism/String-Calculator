@@ -8,12 +8,16 @@ public class StringCalculator {
 
         String[] strings = input.split(",");
 
-        return getSum(strings[0],strings[1]);
+        return getSum(strings);
     }
 
     //get sum of two numbers
-    private int getSum(String n1,String n2){
-        return Integer.parseInt(n1)+Integer.parseInt(n2);
+    private int getSum(String[] strings){
+        int sum=0;
+        for(int i=0;i<strings.length;i++){
+            sum += Integer.parseInt(strings[i]);
+        }
+        return sum;
     }
 
     //find the length of string
