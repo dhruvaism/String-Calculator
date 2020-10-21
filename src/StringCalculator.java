@@ -14,8 +14,8 @@ public class StringCalculator {
     //get sum of two numbers
     private int getSum(String[] strings){
         int sum=0;
-        for(int i=0;i<strings.length;i++){
-            sum += Integer.parseInt(strings[i]);
+        for(String n:strings){
+            sum += string2Int(n);
         }
         return sum;
     }
