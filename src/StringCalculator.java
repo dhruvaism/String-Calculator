@@ -1,12 +1,14 @@
 public class StringCalculator {
 
+    private final String delimiters=",|\n";
+
     public int add(String input){
         if(isEmpty(input))
             return 0;
         else if(length(input)==1)
             return string2Int(input);
 
-        String[] strings = input.split(",|\n");
+        String[] strings = input.split(delimiters);
 
         return getSum(strings);
     }
