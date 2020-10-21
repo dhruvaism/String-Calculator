@@ -5,8 +5,15 @@ public class StringCalculator {
             return 0;
         else if(length(input)==1)
             return string2Int(input);
+
         String[] strings = input.split(",");
-        return string2Int(strings[0])+string2Int(strings[1]);
+
+        return getSum(strings[0],strings[1]);
+    }
+
+    //get sum of two numbers
+    private int getSum(String n1,String n2){
+        return Integer.parseInt(n1)+Integer.parseInt(n2);
     }
 
     //find the length of string
