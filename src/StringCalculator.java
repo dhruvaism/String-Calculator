@@ -18,14 +18,18 @@ public class StringCalculator {
 
     public String[] split(String input){
         if(input.startsWith("//")){
-            Pattern pattern = Pattern.compile("//(.)\n(.*)");
-            Matcher matcher = pattern.matcher(input);
-            matcher.matches();
-            String customDelimiters = matcher.group(1);
-            String numbers = matcher.group(2);
-            return numbers.split(customDelimiters);
+            return splitOnCustomDelimiters(input);
         }
         return input.split(delimiters);
+    }
+
+    private String[] splitOnCustomDelimiters(String input){
+        String regex = "//(.)\n(.*)";
+        Matcher matcher = Pattern.compile(regex).matcher(input);
+        matcher.matches();
+        String customDelimiters = matcher.group(1);
+        String numbers = matcher.group(2);
+        return numbers.split(customDelimiters);
     }
 
     //get sum of two numbers
