@@ -20,6 +20,11 @@ public class StringCalculatorTest {
         assertEquals(1,calculator.add("1"));
     }
 
+    @Test
+    public void twoCharsCommaDelimitedStringReturnsSum(){
+       assertEquals(3,calculator.add("1,2"));
+    }
+
     @AfterEach
     public  void destroy(){
        calculator = null;
