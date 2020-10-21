@@ -46,11 +46,15 @@ public class StringCalculator {
 
         int sum=0;
         for(String n:strings){
-            if(string2Int(n)>1000)
+            if(isGreaterThan1000(string2Int(n)))
                 continue;
             sum += string2Int(n);
         }
         return sum;
+    }
+
+    private boolean isGreaterThan1000(int n){
+        return n>1000;
     }
 
     private void checkForNegativeNumbers(String[] strings) throws Exception{
