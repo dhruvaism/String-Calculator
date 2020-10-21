@@ -54,6 +54,14 @@ public class StringCalculatorTest {
 
     }
 
+    @Test
+    public void shouldIgnoreLargeNumber() throws Exception { //large number =  >1000
+        assertEquals(3,calculator.add("1,2,1010"));
+    }
+
+
+
+
     @AfterEach
     public  void destroy(){
        calculator = null;
